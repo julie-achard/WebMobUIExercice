@@ -1,4 +1,5 @@
 <script setup>
+import TheHeader from "./components/TheHeader.vue";
 import { computed, ref, watchEffect } from "vue";
 const baseKelvin = ref(0);
 const celsius = computed(() => baseKelvin.value - 273.15);
@@ -15,6 +16,8 @@ watchEffect(() => {
 </script>
 
 <template>
+  <TheHeader></TheHeader>
+  <TheMainPage></TheMainPage>
   <label>Kelvin</label>
   <input type="number" :value="baseKelvin" @input="updateBaseKelvin($event)" />
   <label>Celsius</label>
