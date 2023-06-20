@@ -1,7 +1,10 @@
 <script setup>
+import { remove } from "../stores/bookmarks.js";
+import BookmarkForm from "./BookmarkForm.vue";
 defineProps({
   bookmark: Object,
 });
+const showForm = ref(false);
 </script>
 
 <template>
@@ -12,7 +15,8 @@ defineProps({
     <div>{{ bookmark.tags }}</div>
     <div>
       <button @click="remove(bookmark)">Remove</button>
-      <button @click="modify(bookmark)">Modify</button>
+      <button @click="showForm = true">Modify</button>
+      <bookmark-form v-if="showForm" :bookmark="bookmark" mode="edit" />
     </div>
   </div>
 </template>
